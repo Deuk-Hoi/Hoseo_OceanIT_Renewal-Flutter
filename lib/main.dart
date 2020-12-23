@@ -108,6 +108,14 @@ class _MainPageState extends State<MainPage> {
                       ],
                     ))
               ],
+            ),
+            Container(
+              alignment: Alignment.topLeft,
+              margin: EdgeInsets.only(top: 20, left: 20),
+              child: Text(
+                "최근 연구 과제",
+                style: TextStyle(fontFamily: 'NanumSquare'),
+              ),
             )
           ],
         ));
