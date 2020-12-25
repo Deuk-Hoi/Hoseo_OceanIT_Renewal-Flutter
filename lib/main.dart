@@ -114,10 +114,54 @@ class _MainPageState extends State<MainPage> {
               margin: EdgeInsets.only(top: 20, left: 20),
               child: Text(
                 "최근 연구 과제",
-                style: TextStyle(fontFamily: 'NanumSquare'),
+                style: TextStyle(fontFamily: "HangeulNuri", fontWeight: FontWeight.bold),
               ),
-            )
+            ),
+            Container(
+              height: 150.0,
+              width: double.infinity,
+              margin: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+              child: Card(
+                elevation: 10.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                child: InkWell(
+                  splashColor: Colors.blue.withAlpha(60),
+                  onTap: (){},
+                  child:Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        flex: 4,
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 10.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10.0),
+                            child: Image.asset('assets/OceanMain.jpg', fit: BoxFit.fill , width: 140, height: 100,),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 6,
+                        child: a
+                      ),
+                    ],
+                  )
+                ),
+                
+              ) 
+            )   
           ],
         ));
   }
 }
+var a = new Container(
+                          height: double.infinity,
+                          margin: EdgeInsets.only(top: 20, bottom: 20, right: 10),
+                          child: ListTile(
+                            title: Text("분산형 수증 관측망", style: TextStyle(fontSize: 20),),
+                            subtitle: Text("빵구 똥꾸빵구 똥꾸빵구 똥꾸빵구 똥꾸빵구 똥꾸빵구 똥꾸똥꾸빵구 똥꾸똥꾸빵구 똥꾸", maxLines: 3),
+                          ),
+                        );

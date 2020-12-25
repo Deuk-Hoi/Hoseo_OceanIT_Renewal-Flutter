@@ -73,6 +73,10 @@ flutter:
       fonts:
         - asset: assets/fonts/NanumSquareRoundB.ttf
         - asset: assets/fonts/NanumSquareRoundR.ttf
+    - family: HangeulNuri
+      fonts:
+        - asset: assets/fonts/HangeulNuriB.ttf
+        - asset: assets/fonts/HangeulNuriR.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
