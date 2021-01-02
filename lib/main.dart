@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:hoseo_oceanit2/login.dart';
 import 'package:marquee_widget/marquee_widget.dart';
+import 'package:flutter/services.dart';
 //import 'package:carousel_slider/carousel_slider.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+  ));
   runApp(Main());
 }
 
@@ -230,81 +235,208 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("해양IT융합기술연구소"),
-          centerTitle: true,
-          elevation: 0.0,
-        ),
-        drawer: Drawer(),
-        body: SingleChildScrollView(
-            child: Column(children: [
-          Stack(
+  Widget drawerList(String menutitle, IconData icons,
+      {Color iconColor = Colors.black54}) {
+    return ListTile(
+      leading: Icon(
+        icons,
+        color: iconColor,
+      ),
+      title: Text(
+        menutitle,
+        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+      ),
+      onTap: () {
+        if (menutitle == "로그인") {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => LoginPage()));
+        }
+      },
+    );
+  }
+
+  Widget drawerLayout() {
+    return ClipRRect(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(35), bottomRight: Radius.circular(35)),
+        child: Drawer(
+          child: Stack(
             children: [
-              Image.asset('assets/OceanMain.jpg'),
-              Container(
-                height: 50,
-                margin: EdgeInsets.only(left: 5, right: 5, top: 15),
-                padding: EdgeInsets.only(left: 20, right: 20),
-                child: TextField(
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
+              Image.asset(
+                "assets/drawer.jpg",
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: double.infinity,
+              ),
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        width: 100,
+                        height: 100,
+                        margin: EdgeInsets.only(left: 10, top: 50),
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: NetworkImage(
+                                  "http://cfs5.pie.daum.net/fs/file.php?path=7%2FLzAvMi82Ny85Nw%24%24%2F05.jpg"),
+                            )),
                       ),
-                      filled: true,
-                      fillColor: Colors.white,
-                      hintText: "Search",
-                      hintStyle: TextStyle(height: 3.0)),
-                ),
+                      Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                                margin: EdgeInsets.only(
+                                    left: 10, right: 10, top: 45),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      "호서대학교",
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      "전임교수",
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.indigo[900],
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                )),
+                            Container(
+                                margin: EdgeInsets.only(
+                                    left: 10, right: 10, top: 5),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      "이승기",
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          color: Colors.indigo[900],
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                ))
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                  Container(
+                    transform: Matrix4.translationValues(0.0, 30, 0.0),
+                    child: Column(
+                      children: [
+                        drawerList("Home", Icons.home),
+                        drawerList("연구성과", Icons.biotech),
+                        drawerList("연구과제", Icons.create),
+                        drawerList("연구인력", Icons.group),
+                        drawerList("문의게시판", Icons.question_answer),
+                        drawerList("PC 버전", Icons.computer),
+                        drawerList("수중관측", Icons.waves),
+                      ],
+                    ),
+                  ),
+                ],
               ),
               Container(
-                alignment: Alignment.centerRight,
-                margin: EdgeInsets.only(right: 30, top: 15),
-                child: IconButton(
-                  icon: Icon(Icons.search),
-                  onPressed: () {},
-                ),
+                alignment: Alignment(-1.0, 1.0),
+                margin: EdgeInsets.only(bottom: 10),
+                child: drawerList("로그인", Icons.power_settings_new,
+                    iconColor: Colors.blue),
               ),
             ],
           ),
-          _nameCard(),
-          Container(
-            alignment: Alignment.topLeft,
-            margin: EdgeInsets.only(left: 20),
-            child: Text(
-              "최근 연구 과제",
-              style: TextStyle(
-                  fontSize: 16,
-                  fontFamily: "HangeulNuri",
-                  fontWeight: FontWeight.bold),
+        ));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("해양IT융합기술연구소"),
+        centerTitle: true,
+        elevation: 0.0,
+      ),
+      body: SingleChildScrollView(
+          child: Column(children: [
+        Stack(
+          children: [
+            Image.asset('assets/OceanMain.jpg'),
+            Container(
+              height: 50,
+              margin: EdgeInsets.only(left: 5, right: 5, top: 15),
+              padding: EdgeInsets.only(left: 20, right: 20),
+              child: TextField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
+                    hintText: "Search",
+                    hintStyle: TextStyle(height: 3.0)),
+              ),
             ),
+            Container(
+              alignment: Alignment.centerRight,
+              margin: EdgeInsets.only(right: 30, top: 15),
+              child: IconButton(
+                icon: Icon(Icons.search),
+                onPressed: () {},
+              ),
+            ),
+          ],
+        ),
+        _nameCard(),
+        Container(
+          alignment: Alignment.topLeft,
+          margin: EdgeInsets.only(left: 20),
+          child: Text(
+            "최근 연구 과제",
+            style: TextStyle(
+                fontSize: 16,
+                fontFamily: "HangeulNuri",
+                fontWeight: FontWeight.bold),
           ),
-          _researchCard(),
-          Container(
-            alignment: Alignment.topLeft,
-            margin: EdgeInsets.only(top: 10, left: 20, bottom: 20),
-            child: Text(
-              "Quick Menu",
-              style: TextStyle(
-                  fontSize: 16,
-                  fontFamily: "HangeulNuri",
-                  fontWeight: FontWeight.bold),
-            ),
+        ),
+        _researchCard(),
+        Container(
+          alignment: Alignment.topLeft,
+          margin: EdgeInsets.only(top: 10, left: 20, bottom: 20),
+          child: Text(
+            "Quick Menu",
+            style: TextStyle(
+                fontSize: 16,
+                fontFamily: "HangeulNuri",
+                fontWeight: FontWeight.bold),
           ),
-          _quickMenu(),
-          Container(
-            margin: EdgeInsets.only(top: 50),
-            alignment: Alignment.bottomCenter,
-            child: Text(
-              "Copyright ⓒ 2021. Deuk. All rights reserved.",
-              style: TextStyle(
-                  fontSize: 12,
-                  fontFamily: "HangeulNuri",
-                  fontWeight: FontWeight.bold),
-            ),
-          )
-        ])));
+        ),
+        _quickMenu(),
+        Container(
+          margin: EdgeInsets.only(top: 50),
+          alignment: Alignment.bottomCenter,
+          child: Text(
+            "Copyright ⓒ 2021. Deuk. All rights reserved.",
+            style: TextStyle(
+                fontSize: 12,
+                fontFamily: "HangeulNuri",
+                fontWeight: FontWeight.bold),
+          ),
+        )
+      ])),
+      drawer: drawerLayout(),
+    );
   }
 }

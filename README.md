@@ -47,3 +47,8 @@
 - 추후 추가 예정 (설명)
     - 1
     - 2
+## Image Licence
+- Drawer Image
+    - Freepik License
+    - <a href="http://www.freepik.com">Designed by Freepik</a>
+    - <a href='https://www.freepik.com/vectors/background'>Background vector created by freepik - www.freepik.com</a>
