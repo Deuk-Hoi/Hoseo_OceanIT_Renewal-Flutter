@@ -52,3 +52,6 @@
     - Freepik License
     - <a href="http://www.freepik.com">Designed by Freepik</a>
     - <a href='https://www.freepik.com/vectors/background'>Background vector created by freepik - www.freepik.com</a>
+- Login Image
+    - Flaticon License
+    - <a href="https://www.flaticon.com/kr/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a>
