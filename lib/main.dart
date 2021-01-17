@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hoseo_oceanit2/login.dart';
+import 'package:hoseo_oceanit2/research_field.dart';
 import 'package:marquee_widget/marquee_widget.dart';
 import 'package:flutter/services.dart';
 //import 'package:carousel_slider/carousel_slider.dart';
@@ -172,7 +173,10 @@ class _MainPageState extends State<MainPage> {
                 child: InkWell(
                   splashColor: Colors.blue.withAlpha(60),
                   onTap: () {
-                    print("연구과제");
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ResearchField()));
                   },
                   child: Column(
                     children: [
