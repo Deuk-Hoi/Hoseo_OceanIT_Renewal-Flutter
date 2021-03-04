@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 researchCard(dynamic fieldElement) {
   var startDate = DateTime.parse(fieldElement.date_start);
   var endDate = DateTime.parse(fieldElement.date_end);
+  var now = DateTime.now();
   Text researchStatus;
-  if (endDate.difference(startDate).inDays > 0) {
+  if (endDate.difference(now).inDays > 0) {
     researchStatus = Text(
       "연구진행중",
       style: TextStyle(

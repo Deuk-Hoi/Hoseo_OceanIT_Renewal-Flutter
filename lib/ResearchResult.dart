@@ -34,11 +34,11 @@ class _ResearchResultState extends State<ResearchResult> {
   @override
   void initState() {
     super.initState();
-    resultData = fetchGet();
   }
 
   @override
   Widget build(BuildContext context) {
+    resultData = fetchGet(_seletedValue);
     return Scaffold(
         appBar: AppBar(
           title: Text("연구 성과"),
@@ -74,14 +74,18 @@ class _ResearchResultState extends State<ResearchResult> {
               if (snapshot.hasData) {
                 return ListView.builder(
                     itemCount: snapshot.data.length,
+                    // ignore: missing_return
                     itemBuilder: (context, index) {
                       var resultElement = snapshot.data[index];
-                      return Container(
-                        margin: EdgeInsets.symmetric(horizontal: 5.0),
-                        width: double.infinity,
-                        height: 130.0,
-                        child: resultCard(resultElement),
-                      );
+                      if(_seletedValue == resultElement.classify_ko) {
+                        return Container(
+                          margin: EdgeInsets.symmetric(horizontal: 5.0),
+                          width: double.infinity,
+                          height: 130.0,
+                          child: resultCard(resultElement, _seletedValue),
+                        );
+
+                      }
                     });
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
