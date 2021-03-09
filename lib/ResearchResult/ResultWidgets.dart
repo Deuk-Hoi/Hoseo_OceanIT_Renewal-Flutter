@@ -21,10 +21,8 @@ resultCard(dynamic resultElement, dynamic _seletedValue) {
     middleContents = "출원번호 : ${resultElement.application_num}";
   }
   return Card(
-      elevation: 5.0,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-          side: BorderSide(color: Colors.blue, width: 2.0)),
+      elevation: 7.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
       child: InkWell(
         onTap: () {},
         child: Container(
@@ -49,9 +47,9 @@ resultCard(dynamic resultElement, dynamic _seletedValue) {
                 child: Text(
                   middleContents,
                   style: TextStyle(
-                      color: Colors.purple,
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.bold),
+                    color: Colors.black,
+                    fontSize: 16.0,
+                  ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),

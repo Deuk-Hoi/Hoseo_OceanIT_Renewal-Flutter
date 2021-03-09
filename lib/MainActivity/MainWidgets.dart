@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hoseo_oceanit2/MainActivity/MainHeader.dart';
 import 'package:hoseo_oceanit2/ResearchField.dart';
 import 'package:hoseo_oceanit2/researchResult.dart';
+import 'package:hoseo_oceanit2/Member.dart';
 import 'package:marquee_widget/marquee_widget.dart';
 
 Widget nameCard(dynamic context) {
@@ -123,7 +124,8 @@ Widget quickMenu(dynamic context, MainHeader mainHeader) {
               child: InkWell(
                 splashColor: Colors.blue.withAlpha(60),
                 onTap: () {
-                  print("연구인력");
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Researcher()));
                 },
                 child: Column(
                   children: [

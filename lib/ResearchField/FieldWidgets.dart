@@ -19,10 +19,8 @@ researchCard(dynamic fieldElement) {
     );
   }
   return Card(
-      elevation: 5.0,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-          side: BorderSide(color: Colors.blue, width: 2.0)),
+      elevation: 7.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
       child: InkWell(
         onTap: () {
           print(fieldElement.rfid);

@@ -2,11 +2,10 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 
-
 Future<List<ResultData>> fetchGet(String query) async {
-  final response =
-      await http.get('http://210.119.107.82:8080/research/android/results?classify=$query');
-
+  final response = await http.get(
+      'http://210.119.107.82:8080/research/android/results?classify=$query');
+  print("is active?");
   if (response.statusCode == 200) {
     List list = jsonDecode(response.body);
     var data = list.map((element) => ResultData.fromJson(element)).toList();

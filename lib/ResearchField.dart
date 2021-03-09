@@ -39,6 +39,8 @@ class _ResearchFieldState extends State<ResearchField> {
 
   @override
   Widget build(BuildContext context) {
+    fieldData = fetchPost();
+    fieldData = fetchPost();
     return Scaffold(
         appBar: AppBar(
           title: Text("연구 과제"),
@@ -79,7 +81,7 @@ class _ResearchFieldState extends State<ResearchField> {
                       return Container(
                         margin: EdgeInsets.symmetric(horizontal: 5.0),
                         width: double.infinity,
-                        height: 150.0,
+                        height: 140.0,
                         child: researchCard(fieldElement),
                       );
                     });
