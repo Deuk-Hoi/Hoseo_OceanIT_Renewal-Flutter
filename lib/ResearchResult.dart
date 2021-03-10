@@ -34,11 +34,11 @@ class _ResearchResultState extends State<ResearchResult> {
   @override
   void initState() {
     super.initState();
+    resultData = fetchGet(_seletedValue);
   }
 
   @override
   Widget build(BuildContext context) {
-    resultData = fetchGet(_seletedValue);
     resultData = fetchGet(_seletedValue);
     resultData = fetchGet(_seletedValue);
     return Scaffold(

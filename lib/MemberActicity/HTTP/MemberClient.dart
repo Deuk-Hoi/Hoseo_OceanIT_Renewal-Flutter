@@ -4,10 +4,11 @@ import 'dart:async';
 
 Future<List<MemberData>> fetchPost() async {
   final response =
-      await http.get('http://210.119.107.82:8080/research/android/fields/');
+      await http.post('http://210.119.107.82:8080/members/android/MemberALL/');
 
   if (response.statusCode == 200) {
     List list = jsonDecode(response.body);
+    print(list);
     var data = list.map((element) => MemberData.fromJson(element)).toList();
     return data;
   } else {

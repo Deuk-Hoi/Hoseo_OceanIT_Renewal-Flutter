@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:hoseo_oceanit2/MemberActicity/HTTP/MemberClient.dart';
 
 class Member extends StatelessWidget {
   @override
@@ -24,35 +25,52 @@ class Researcher extends StatefulWidget {
 }
 
 class _ResearcherState extends State<Researcher> {
+  Future<List<MemberData>> memberDatas;
+  @override
+  void initState() {
+    super.initState();
+    memberDatas = fetchPost();
+  }
+
   @override
   Widget build(BuildContext context) {
+    memberDatas = fetchPost();
+    memberDatas = fetchPost();
     return Scaffold(
-      appBar: AppBar(title: Text("연구 인력")),
-      body: ListWheelScrollView(
-          itemExtent: 250,
-          diameterRatio: 2.5,
-          children: [for (int i = 0; i < 10; i++) Members(index: i + 1)]),
-    );
+        appBar: AppBar(title: Text("연구 인력")),
+        body: Center(
+          child: FutureBuilder<List<MemberData>>(
+            future: memberDatas,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Container(
+                  margin: EdgeInsets.symmetric(horizontal: 5.0),
+                  width: double.infinity,
+                  height: double.infinity,
+                  child: ListWheelScrollView(
+                      itemExtent: 250,
+                      diameterRatio: 2.5,
+                      children: [
+                        for (final element in snapshot.data) Members(element)
+                      ]),
+                );
+              } else if (snapshot.hasError) {
+                return Text("${snapshot.error}");
+              }
+              return CircularProgressIndicator();
+            },
+          ),
+        ));
   }
 }
 
 class Members extends StatelessWidget {
-  final int index;
+  final dynamic membersElement;
 
-  Members({@required this.index, Key key}) : super(key: key);
-
-  static const colors = [
-    Colors.pink,
-    Colors.indigo,
-    Colors.grey,
-    Colors.red,
-    Colors.blue,
-    Colors.green,
-    Colors.yellow,
-  ];
-
+  Members(this.membersElement);
   @override
   Widget build(BuildContext context) {
+    print("사진?" + membersElement.photo);
     return AspectRatio(
       aspectRatio: 16 / 9,
       child: Card(
@@ -73,16 +91,16 @@ class Members extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                "김해양아이티",
+                                membersElement.name_ko,
                                 style: TextStyle(
                                     fontSize: 20.0,
                                     fontWeight: FontWeight.bold),
                                 textAlign: TextAlign.start,
                               ),
                               SizedBox(
-                                width: 10.0,
+                                width: 5.0,
                               ),
-                              Text("교수"),
+                              Text(membersElement.position_ko),
                             ],
                           ),
                           SizedBox(
@@ -92,9 +110,9 @@ class Members extends StatelessWidget {
                             children: [
                               Text("호서대학교"),
                               SizedBox(
-                                width: 10.0,
+                                width: 5.0,
                               ),
-                              Text("정보통신공학부"),
+                              Text(membersElement.department_ko),
                             ],
                           ),
                           SizedBox(
@@ -107,8 +125,16 @@ class Members extends StatelessWidget {
                       width: 90,
                       height: 120,
                       margin: EdgeInsets.only(right: 20.0, top: 10),
-                      color: Colors.blue,
-                    )
+                      decoration: BoxDecoration(
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.circular(5.0),
+                          image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: NetworkImage(
+                                "http://uitlab.cf:8080/images/members/" +
+                                    membersElement.photo),
+                          )),
+                    ),
                   ],
                 ),
                 Column(
@@ -128,7 +154,7 @@ class Members extends StatelessWidget {
                               SizedBox(
                                 width: 10.0,
                               ),
-                              Text("041-000-0000")
+                              Text(membersElement.phone)
                             ],
                           ),
                           SizedBox(
@@ -145,7 +171,10 @@ class Members extends StatelessWidget {
                               SizedBox(
                                 width: 10.0,
                               ),
-                              Text("hlko@hoseo.edu")
+                              if (membersElement.email == null)
+                                Text("oceanIT@hoseo.edu")
+                              else
+                                Text(membersElement.email)
                             ],
                           ),
                         ],

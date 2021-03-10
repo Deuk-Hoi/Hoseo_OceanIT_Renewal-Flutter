@@ -2,7 +2,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 
-Future<List<FieldData>> fetchPost() async {
+Future<List<FieldData>> fetchGet() async {
   final response =
       await http.get('http://210.119.107.82:8080/research/android/fields/');
 
