@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hoseo_oceanit2/ResearchField/DialogHelper/DialogHelper.dart';
 
-researchCard(dynamic fieldElement) {
+researchCard(dynamic fieldElement, BuildContext context) {
   var startDate = DateTime.parse(fieldElement.date_start);
   var endDate = DateTime.parse(fieldElement.date_end);
   var now = DateTime.now();
@@ -24,6 +25,7 @@ researchCard(dynamic fieldElement) {
       child: InkWell(
         onTap: () {
           print(fieldElement.rfid);
+          DialogHelper.exit(context, fieldElement);
         },
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
@@ -36,14 +38,14 @@ researchCard(dynamic fieldElement) {
                   fieldElement.research_name_ko,
                   style: TextStyle(
                     color: Colors.blue,
-                    fontSize: 20.0,
+                    fontSize: 18.0,
                     fontWeight: FontWeight.bold,
                   ),
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 10.0),
+                margin: EdgeInsets.symmetric(vertical: 5.0),
                 child: Text(
                   fieldElement.research_goal_ko,
                   style: TextStyle(

@@ -82,7 +82,7 @@ class _ResearchFieldState extends State<ResearchField> {
                         margin: EdgeInsets.symmetric(horizontal: 5.0),
                         width: double.infinity,
                         height: 140.0,
-                        child: researchCard(fieldElement),
+                        child: researchCard(fieldElement, context),
                       );
                     });
               } else if (snapshot.hasError) {

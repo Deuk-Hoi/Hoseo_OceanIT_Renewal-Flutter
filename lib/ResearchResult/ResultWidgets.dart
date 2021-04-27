@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-resultCard(dynamic resultElement, dynamic _seletedValue) {
+resultCard(dynamic resultElement, dynamic _seletedValue, BuildContext context) {
   var writer;
   var customColor;
   var middleContents;
@@ -24,7 +24,9 @@ resultCard(dynamic resultElement, dynamic _seletedValue) {
       elevation: 7.0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          print(resultElement.rfid);
+        },
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
           child: Column(
@@ -36,14 +38,14 @@ resultCard(dynamic resultElement, dynamic _seletedValue) {
                   resultElement.title_ko,
                   style: TextStyle(
                     color: Colors.blue,
-                    fontSize: 20.0,
+                    fontSize: 18.0,
                     fontWeight: FontWeight.bold,
                   ),
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 10.0),
+                margin: EdgeInsets.symmetric(vertical: 5.0),
                 child: Text(
                   middleContents,
                   style: TextStyle(

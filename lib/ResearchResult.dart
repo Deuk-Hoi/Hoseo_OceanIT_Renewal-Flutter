@@ -84,7 +84,7 @@ class _ResearchResultState extends State<ResearchResult> {
                           margin: EdgeInsets.symmetric(horizontal: 5.0),
                           width: double.infinity,
                           height: 140.0,
-                          child: resultCard(resultElement, _seletedValue),
+                          child: resultCard(resultElement, _seletedValue, context),
                         );
                       }
                     });
