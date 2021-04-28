@@ -2,9 +2,17 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 
-Future<List<FieldData>> fetchGet() async {
+Future<List<FieldData>> fetchGet(String query) async {
+  final _valueList = ['전체 과제', '진행 과제', '완료 과제'];
+  var value = "";
+  if(query == "전체 과제")
+    value = "all";
+  else if(query == "진행 과제")
+    value = "progress";
+  else
+    value = "finish";
   final response =
-      await http.get('http://210.119.107.82:8080/research/android/fields/');
+      await http.get('http://210.119.107.82:8080/research/android/fields?classify=$value');
 
   if (response.statusCode == 200) {
     List list = jsonDecode(response.body);

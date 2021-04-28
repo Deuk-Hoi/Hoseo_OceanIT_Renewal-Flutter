@@ -131,7 +131,7 @@ class Members extends StatelessWidget {
                           image: DecorationImage(
                             fit: BoxFit.fill,
                             image: NetworkImage(
-                                "http://uitlab.cf:8080/images/members/" +
+                                "http://210.119.107.82:8080/images/members/" +
                                     membersElement.photo),
                           )),
                     ),

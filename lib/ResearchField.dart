@@ -34,13 +34,13 @@ class _ResearchFieldState extends State<ResearchField> {
   @override
   void initState() {
     super.initState();
-    fieldData = fetchGet();
+    fieldData = fetchGet(_seletedValue);
   }
 
   @override
   Widget build(BuildContext context) {
-    fieldData = fetchGet();
-    fieldData = fetchGet();
+    fieldData = fetchGet(_seletedValue);
+    fieldData = fetchGet(_seletedValue);
     return Scaffold(
         appBar: AppBar(
           title: Text("연구 과제"),
