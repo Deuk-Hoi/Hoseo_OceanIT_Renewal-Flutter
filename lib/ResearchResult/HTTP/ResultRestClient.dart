@@ -98,15 +98,15 @@ class ResultData {
   factory ResultData.fromJson(Map<String, dynamic> json) {
     return ResultData(
         rrid: json['rrid'],
-        classify_ko: json['classify_ko'],
+        classify_ko: json['classify_ko'], //성과 클래스
         classify_en: json['classify_en'],
-        title_ko: json['title_ko'],
+        title_ko: json['title_ko'], //제목
         title_en: json['title_en'],
-        academic_ko: json['academic_ko'],
+        academic_ko: json['academic_ko'],//학술 대회명
         academic_en: json['academic_en'],
-        writer_ko: json['writer_ko'],
+        writer_ko: json['writer_ko'], //저자 발명자
         writer_en: json['writer_en'],
-        media_ko: json['media_ko'],
+        media_ko: json['media_ko'],//게제지
         media_en: json['media_en'],
         announe_nation_ko: json['announe_nation_ko'],
         announe_nation_en: json['announe_nation_en'],
@@ -115,6 +115,6 @@ class ResultData {
         abstract_ko: json['abstract_ko'],
         abstract_en: json['abstract_en'],
         date: json['date'],
-        application_num: json['application_num']);
+        application_num: json['application_num']); //출원 번호 특허
   }
 }

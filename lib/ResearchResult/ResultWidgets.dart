@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-
+import 'package:hoseo_oceanit2/ResearchResult/DialogHelper/DialogHelper.dart';
 resultCard(dynamic resultElement, dynamic _seletedValue, BuildContext context) {
   var writer;
   var customColor;
   var middleContents;
-  if (resultElement.writer_ko.length > 15) {
-    writer = resultElement.writer_ko.substring(0, 15) + "...";
+  if (resultElement.writer_ko.length > 13) {
+    writer = resultElement.writer_ko.substring(0, 13) + "...";
   } else {
     writer = resultElement.writer_ko;
   }
@@ -25,7 +25,8 @@ resultCard(dynamic resultElement, dynamic _seletedValue, BuildContext context) {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
       child: InkWell(
         onTap: () {
-          print(resultElement.rfid);
+          print(resultElement.rrid);
+          DialogHelper.exit(context, resultElement);
         },
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
