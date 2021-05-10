@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hoseo_oceanit2/Login.dart';
-
+import 'package:hoseo_oceanit2/ResearchResult.dart';
+import 'package:hoseo_oceanit2/ResearchField.dart';
+import 'package:hoseo_oceanit2/Member.dart';
 Widget drawerList(dynamic context, String menutitle, IconData icons,
     {Color iconColor = Colors.black54}) {
   return ListTile(
@@ -16,6 +18,19 @@ Widget drawerList(dynamic context, String menutitle, IconData icons,
       if (menutitle == "로그인") {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => LoginPage()));
+      }else if(menutitle == "Home") {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => ResultPage()));
+      }
+      else if(menutitle == "연구성과") {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => ResearchResult()));
+      }else if(menutitle == "연구과제") {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => ResearchField()));
+      }else if(menutitle == "연구인력") {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Researcher()));
       }
     },
   );
@@ -47,7 +62,7 @@ Widget drawerLayout(dynamic context) {
                           image: DecorationImage(
                             fit: BoxFit.fill,
                             image: NetworkImage(
-                                "http://cfs5.pie.daum.net/fs/file.php?path=7%2FLzAvMi82Ny85Nw%24%24%2F05.jpg"),
+                                "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTAyMjVfMiAg%2FMDAxNjE0MjU2MjI5MjE0.evx3EU3eK-04NangY2Iz4sr8p47C9IFoy3_ogRSS9l4g.EnqAMD9x2KteaLX-nJ7VrV987iseDZvE6R868RGPbQ0g.JPEG.juhyeseon0611%2F5GR05718.jpg&type=sc960_832"),
                           )),
                     ),
                     Container(
