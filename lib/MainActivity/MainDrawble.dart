@@ -123,7 +123,6 @@ Widget drawerLayout(dynamic context) {
                       drawerList(context, "연구성과", Icons.biotech),
                       drawerList(context, "연구과제", Icons.create),
                       drawerList(context, "연구인력", Icons.group),
-                      drawerList(context, "문의게시판", Icons.question_answer),
                       drawerList(context, "PC 버전", Icons.computer),
                       drawerList(context, "수중관측", Icons.waves),
                     ],

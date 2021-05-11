@@ -5,6 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hoseo_oceanit2/MainActivity/MainHeader.dart';
 import 'package:hoseo_oceanit2/MainActivity/MainWidgets.dart';
 import 'package:hoseo_oceanit2/MainActivity/MainDrawble.dart';
+import 'package:hoseo_oceanit2/MainActivity/HTTP/MainClient.dart';
 
 Locale deviceLang;
 
@@ -44,8 +45,18 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   MainHeader mainHeader;
+  Future<MainData> mainData;
+  @override
+
+  void initState() {
+    super.initState();
+    mainData = fetchPost();
+  }
+
   @override
   Widget build(BuildContext context) {
+    mainData = fetchPost();
+    mainData = fetchPost();
     deviceLang = Localizations.localeOf(context);
     if (deviceLang.languageCode == "ko") {
       mainHeader =
@@ -102,7 +113,14 @@ class _MainPageState extends State<MainPage> {
                 fontWeight: FontWeight.bold),
           ),
         ),
-        researchCard(),
+        FutureBuilder(
+            future:mainData,
+            builder:(context, snapshot){
+            if(snapshot.hasData){
+              researchCard(snapshot.data);
+            }
+            return CircularProgressIndicator();
+        }),
         Container(
           alignment: Alignment.topLeft,
           margin: EdgeInsets.only(top: 10, left: 20, bottom: 20),

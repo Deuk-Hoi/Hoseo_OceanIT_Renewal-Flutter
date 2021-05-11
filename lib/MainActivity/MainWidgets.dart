@@ -4,6 +4,7 @@ import 'package:hoseo_oceanit2/ResearchField.dart';
 import 'package:hoseo_oceanit2/researchResult.dart';
 import 'package:hoseo_oceanit2/Member.dart';
 import 'package:marquee_widget/marquee_widget.dart';
+import 'package:hoseo_oceanit2/MainActivity/HTTP/MainClient.dart';
 
 Widget nameCard(dynamic context) {
   return Container(
@@ -54,7 +55,7 @@ Widget nameCard(dynamic context) {
   );
 }
 
-Widget researchCard() {
+Widget researchCard(dynamic mainElement) {
   return Container(
       height: 150.0,
       width: double.infinity,
@@ -94,12 +95,12 @@ Widget researchCard() {
                       child: ListTile(
                         title: Marquee(
                           child: Text(
-                            "분산형 수중관측 제어망 개발",
+                            mainElement.research_name_ko,
                             style: TextStyle(fontSize: 20, height: 2.5),
                           ),
                         ),
                         subtitle: Text(
-                          "수중환경에서 장시간․실시간 관측 및 제어를 위한 기지국 기반의 수중 관측․제어망 핵심기술 및 체계 구축연구",
+                          mainElement.research_content_ko,
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
                         ),
